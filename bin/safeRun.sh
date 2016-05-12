@@ -5,9 +5,9 @@
 #Handling Errors
 # 0 silent
 # 1 email
-ERROR_HANDLING=0
+ERROR_HANDLING=1
 # Your email address which should recieve the error messages
-EMAIL_ADDRESS="no-reply@example.com"
+EMAIL_ADDRESS="antonrd@gmail.com"
 # Sets the minimun amount of time betweens the sending of error emails. 
 # This ensures you not get spamed while a endless reboot loop 
 # It's the time in seconds

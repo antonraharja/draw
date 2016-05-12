@@ -28,7 +28,7 @@ if(settings.ssl){
     cert: fs.readFileSync(settings.ssl.cert)
   };
   var app = express(options);
-  var server = https.createServer(options, app).listen(settings.ip, settings.port);
+  var server = https.createServer(options, app).listen(settings.port);
 }else{
   var app = express();
   var server = app.listen(settings.port);
@@ -70,8 +70,13 @@ app.get('/', function(req, res){
 });
 
 // Drawings
-app.get('/d/*', function(req, res){
-  res.sendfile(__dirname + '/src/static/html/draw.html');
+app.get('/wb/*', function(req, res){
+  //console.log('accessing: ' + req.url);
+  if (req.url == '/wb/') {
+    res.sendfile(__dirname + '/src/static/html/index.html');
+  } else {
+    res.sendfile(__dirname + '/src/static/html/draw.html');
+  }
 });
 
 // Front-end tests

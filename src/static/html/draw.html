@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>EtherDraw</title>
-        <link rel='stylesheet' href='../static/css/style.css'>
-        <link rel='stylesheet' href='../static/css/farbtastic.css'>
+        <title>meetme.id - gambar bebas</title>
+        <link rel='stylesheet' href='/static/css/style.css'>
+        <link rel='stylesheet' href='/static/css/farbtastic.css'>
 	<script>
 	  /*
 	  |@licstart  The following is the entire license notice for the
@@ -28,17 +28,30 @@
 	  */
 	</script>
         <meta charset="utf-8"> 
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-        <link rel="shortcut icon" href="../static/img/favicon.ico">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1">
+        <link rel="shortcut icon" href="/static/img/favicon.ico">
+	<link rel="icon" type="image/x-icon" href="static/img/favicon.ico">
+	<link rel="icon" type="image/png" href="static/img/video-icon-152-184619.png" />
+	<link rel="apple-touch-icon" href="static/img/video-icon-152-184619.png">
+	<link rel="apple-touch-icon-precomposed" href="static/img/video-icon-152-184619.png">
+	<meta name="msapplication-TileColor" content="#ffffff" />
+	<meta name="msapplication-TileImage" content="images/video-icon-144-184619.png">
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="static/img/video-icon-152-184619.png">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="static/img/video-icon-144-184619.png">
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="static/img/video-icon-120-184619.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="static/img/video-icon-114-184619.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="static/img/video-icon-72-184619.png">
+	<link rel="apple-touch-icon-precomposed" href="static/img/video-icon-57-184619.png">
+	<link rel="icon" href="static/img/video-icon-32-184619.png" sizes="32x32">
 
-        <script src='../socket.io/socket.io.js'></script>
-        <script src='../static/js/lib/jquery.js'></script>
-        <script src='../static/js/lib/jquery_browser.js'></script>
-        <script src='../static/js/lib/paper.js'></script>
-        <script src='../static/js/lib/webtoolkit.base64.js'></script>
-        <script src='../static/js/lib/farbtastic.js'></script>
-	<script src='../static/js/lib/jquery.pep.min.js'></script>
-        <script src='../static/js/draw.js' type="text/paperscript" canvas="myCanvas"></script>
+        <script src='/socket.io/socket.io.js'></script>
+        <script src='/static/js/lib/jquery.js'></script>
+        <script src='/static/js/lib/jquery_browser.js'></script>
+        <script src='/static/js/lib/paper.js'></script>
+        <script src='/static/js/lib/webtoolkit.base64.js'></script>
+        <script src='/static/js/lib/farbtastic.js'></script>
+	<script src='/static/js/lib/jquery.pep.min.js'></script>
+        <script src='/static/js/draw.js' type="text/paperscript" canvas="myCanvas"></script>
         <script>document.domain = document.domain;</script>
     </head>
     <body>
@@ -49,27 +62,27 @@
             </div>
             <ul class="menu_left">
                 <!-- paint brush -->
-                <li class="acl-write" id="drawTool" data-key="draw">
+                <li class="acl-write" id="drawTool" data-key="draw" title="Brush">
                     <a class="grouped-left" data-l10n-id="draw.toolbar.draw.title">
                       <span class="buttonicon buttonicon-draw"></span>
                     </a>
                 </li>
 		<!-- pencil brush -->
-                <li class="acl-write" id="pencilTool" data-key="pencil">
+                <li class="acl-write" id="pencilTool" data-key="pencil" title="Pencil">
                     <a class="grouped-middle" data-l10n-id="draw.toolbar.pencil.title">
                       <span class="buttonicon buttonicon-pencil"></span>
                     </a>
                 </li>
 		<!-- Select Tool -->
                 <li class="acl-write" id="selectTool" data-key="select">
-                    <a class="grouped-middle" data-l10n-id="draw.toolbar.select.title">
+                    <a class="grouped-middle" data-l10n-id="draw.toolbar.select.title" title="Select">
                       <span class="buttonicon buttonicon-select"></span>
                     </a>
                 </li>
 
                 <!-- color Selector Toggle -->
                 <li class="acl-write" id="colorToggle" data-key="color">
-                  <a class="grouped-middle" data-l10n-id="draw.toolbar.colorToggle.title">
+                  <a class="grouped-middle" data-l10n-id="draw.toolbar.colorToggle.title" title="Color picker">
                     <span class="buttonicon buttonicon-color" style="opacity:0.5">
                       <div style="display:inline-block;width:5px; height:16px; background-color:red;margin:0;padding:0;float:left"></div>
                       <div style="display:inline-block;width:5px; height:16px; background-color:blue;margin:0;padding:0;float:left"></div>
@@ -78,11 +91,13 @@
                   </a>
                 </li>
 
+		<!--
                 <li class="acl-write" id="clearImage" data-key="clear">
                   <a class="grouped-right" data-l10n-id="draw.toolbar.clearImage" class="clearCanvasPrompt" title="Clear Drawing">
                     <span class="buttonicon buttonicon-clearImage" style="background-color:transparent;background-image:none;border:dotted 1px black;margin:0;color:#000;height:14px;line-height:14px" >X</span>
                   </a>
                 </li>
+                -->
 
                 <li class="acl-write" id="toggleBackground" data-key="clear">
                   <a class="grouped-left" data-l10n-id="draw.toolbar.toggleBackground" class="toggleBackground" title="Toggle Transparent Background">
@@ -92,7 +107,7 @@
 
 		<!-- Upload -->
                 <li class="acl-write" id="uploadImage" data-key="upload">
-                    <a class="grouped-right" data-l10n-id="draw.toolbar.upload.title" title="Upload an Image">
+                    <a class="grouped-middle" data-l10n-id="draw.toolbar.upload.title" title="Upload an Image">
                       <span class="buttonicon buttonicon-upload"></span>
                     </a>
                 </li>
@@ -100,20 +115,24 @@
             <ul class="menu_right">
 
                 <!-- settings -->
+                <!--
                 <li data-key="settings">
                     <a id="settingslink" class="grouped-left" data-l10n-id="draw.toolbar.settings.title">
                         <span class="grouped-left buttonicon buttonicon-settings"></span>
                     </a>
                 </li>
+                -->
                 <!-- import export -->
+                <!--
                 <li data-key="import_export">
                     <a id="importExport" class="grouped-middle" data-l10n-id="draw.toolbar.import_export.title">
                         <span class="buttonicon buttonicon-import_export"></span>
                     </a>
                 </li>
+                -->
 		<!-- share & embed -->
                 <li data-key="embed">
-                    <a id="embedlink" class="grouped-right" data-l10n-id="draw.toolbar.embed.title">
+                    <a id="embedlink" class="" data-l10n-id="draw.toolbar.embed.title">
                         <span class="buttonicon buttonicon-embed"></span>
                     </a>
                 </li>
