@@ -1,6 +1,7 @@
 // Please refactor me, this is mostly a complete car crash with globals everywhere.
 
-tool.minDistance = 10;
+// fixme anton 10->1
+tool.minDistance = 1;
 tool.maxDistance = 45;
 
 var room = /.*\/([^?]+)/.exec(window.location.pathname)[1];
@@ -949,6 +950,7 @@ function onMouseDrag(event) {
       }
     }
 
+    // fixme anton 50->100
     // Send move updates every 50 ms
     if (!item_move_timer_is_active) {
       send_item_move_timer = setInterval(function() {
@@ -963,7 +965,7 @@ function onMouseDrag(event) {
           socket.emit('item:move:progress', room, uid, itemNames, item_move_delta);
           item_move_delta = null;
         }
-      }, 50);
+      }, 100);
     }
     item_move_timer_is_active = true;
   }
@@ -1604,10 +1606,11 @@ function processSettings(settings) {
 
 }
 
+// fixme anton no need to saveDrawing
 // Periodically save drawing
-setInterval(function(){
-  saveDrawing();
-}, 1000);
+//setInterval(function(){
+//  saveDrawing();
+//}, 1000);
 
 function saveDrawing(){
   var canvas = document.getElementById('myCanvas');
